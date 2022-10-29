@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="Verify_Phone">Verify your phone number</string>
+    <string name="Verify_Phone_desc">Chat app will send a message to verify your phone number.</string>
+    <string name="Enter_No">Please enter your number</string>
+    <string name="Continue_button">Continue</string>
+    <string name="Verify_No">Verify </string>
+    <string name="OTPdesc">Enter the OTPto verify your number.</string>
+</resources>
