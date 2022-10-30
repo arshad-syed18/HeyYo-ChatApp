@@ -9,4 +9,8 @@
     <string name="otpBox">Enter the OTP</string>
     <string name="verifyBtn">Verify</string>
     <string name="enter_otp">Enter OTP</string>
+    <string name="prof">Profile Info</string>
+    <string name="textDescProf">Please enter your name and profile image.</string>
+    <string name="namebox">Name</string>
+    <string name="setupProfile">Setup profile</string>
 </resources>

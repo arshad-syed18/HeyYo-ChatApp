@@ -2,51 +2,51 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/OtpVerify"
+    android:id="@+id/setupProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".OTPverify">
+    tools:context=".setupProfile">
 
 
-    <ImageView
-        android:id="@+id/otpPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/Verify_Phone"
+        android:src="@drawable/avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/otp_verify"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/phoneLbl"
+        android:id="@+id/texxtViewProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/Verify_No"
+        android:text="@string/prof"
         android:textColor="@color/textColor"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/otpPic"
-        app:layout_constraintStart_toStartOf="@+id/otpPic"
-        app:layout_constraintTop_toBottomOf="@+id/otpPic" />
+        app:layout_constraintEnd_toEndOf="@+id/profilePic"
+        app:layout_constraintStart_toStartOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/OTPdesc"
+        android:text="@string/textDescProf"
         android:textColor="@color/textColor"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/otpPic"
-        app:layout_constraintStart_toStartOf="@+id/otpPic"
-        app:layout_constraintTop_toBottomOf="@+id/phoneLbl" />
+        app:layout_constraintEnd_toEndOf="@+id/profilePic"
+        app:layout_constraintStart_toStartOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/texxtViewProfile" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -67,28 +67,25 @@
 
 
             <EditText
-                android:id="@+id/OtpText"
+                android:id="@+id/nameBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
                 android:background="@drawable/textbox_outline"
                 android:ems="10"
-                android:hint="@string/enter_otp"
-                android:inputType="numberPassword"
-                android:maxLength="6"
+                android:hint="@string/namebox"
+                android:inputType="text"
                 android:minHeight="48dp"
-
-                android:padding="8dp"
-                android:textColorHint="#8D6E63"
-                android:autofillHints="" />
+                android:padding="8dp" />
 
             <Button
-                android:id="@+id/verifyBtn"
+                android:id="@+id/setupProfBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#4CAF50"
                 android:padding="10dp"
-                android:text="@string/verifyBtn"
+                android:text="@string/setupProfile"
                 android:textColor="#FFFFFF"
                 app:cornerRadius="10dp"
                 tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
@@ -97,11 +94,11 @@
     </androidx.cardview.widget.CardView>
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
