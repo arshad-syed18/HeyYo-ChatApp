@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9f9f9"
+    android:background="@color/backgroundColor"
     tools:context=".MainActivity">
 
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/Verify_Phone"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -38,6 +38,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/Verify_Phone_desc"
         android:textSize="12sp"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -48,7 +49,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="#f9f9f9"
+        app:cardBackgroundColor="@color/backgroundColor"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,11 +71,12 @@
                 android:hint="@string/Enter_No"
                 android:inputType="phone"
                 android:padding="8dp"
+                android:textColor="@color/textColor"
                 android:textColorHint="#616161"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button
-                android:id="@+id/continueBtn"
+                android:id="@+id/continueBTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

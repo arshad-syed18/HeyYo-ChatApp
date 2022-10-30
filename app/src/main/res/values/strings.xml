@@ -4,6 +4,9 @@
     <string name="Verify_Phone_desc">Chat app will send a message to verify your phone number.</string>
     <string name="Enter_No">Please enter your number</string>
     <string name="Continue_button">Continue</string>
-    <string name="Verify_No">Verify </string>
-    <string name="OTPdesc">Enter the OTPto verify your number.</string>
+    <string name="Verify_No">Verify +91 8796512345</string>
+    <string name="OTPdesc">Enter the OTP to verify your number.</string>
+    <string name="otpBox">Enter the OTP</string>
+    <string name="verifyBtn">Verify</string>
+    <string name="enter_otp">Enter OTP</string>
 </resources>
