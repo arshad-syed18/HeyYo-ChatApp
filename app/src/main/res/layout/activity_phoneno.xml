@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/profilePic"
+        android:id="@+id/statusPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -28,9 +28,9 @@
         android:text="@string/Verify_Phone"
         android:textColor="@color/textColor"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/profilePic"
-        app:layout_constraintStart_toStartOf="@+id/profilePic"
-        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+        app:layout_constraintEnd_toEndOf="@+id/statusPic"
+        app:layout_constraintStart_toStartOf="@+id/statusPic"
+        app:layout_constraintTop_toBottomOf="@+id/statusPic" />
 
     <TextView
         android:id="@+id/textView2"
@@ -40,8 +40,8 @@
         android:text="@string/Verify_Phone_desc"
         android:textSize="12sp"
         android:textColor="@color/textColor"
-        app:layout_constraintEnd_toEndOf="@+id/profilePic"
-        app:layout_constraintStart_toStartOf="@+id/profilePic"
+        app:layout_constraintEnd_toEndOf="@+id/statusPic"
+        app:layout_constraintStart_toStartOf="@+id/statusPic"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.cardview.widget.CardView
