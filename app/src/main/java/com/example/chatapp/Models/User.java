@@ -1,4 +1,4 @@
-package com.example.chatapp;
+package com.example.chatapp.Models;
 
 public class User {
     private String uid, name, phoneNumber, profileImage;

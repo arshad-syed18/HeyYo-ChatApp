@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
-            android:name=".ChatActivity"
+            android:name=".Activities.ChatActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -22,21 +22,21 @@
 
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".setupProfile"
+            android:name=".Activities.setupProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OTPverify"
+            android:name=".Activities.OTPverify"
             android:exported="false"
             android:windowSoftInputMode="stateVisible">
             <meta-data
@@ -44,7 +44,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PhoneNumber"
+            android:name=".Activities.PhoneNumber"
             android:exported="true"
             android:windowSoftInputMode="stateVisible">
             <intent-filter>

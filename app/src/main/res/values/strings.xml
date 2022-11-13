@@ -28,4 +28,8 @@
     <string name="attachments">Attachments</string>
     <string name="camera">Camera</string>
     <string name="send">send</string>
+    <string name="textview">TextView</string>
+    <string name="feeling">feeling</string>
+    <string name="textview_sent">TextView</string>
+    <string name="feeling_sent">feeling</string>
 </resources>
