@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.chatapp.Activities.MainActivity;
 import com.example.chatapp.Models.Status;
 import com.example.chatapp.Models.User;
@@ -43,6 +44,12 @@ public class TopStatusAdapter extends RecyclerView.Adapter<TopStatusAdapter.TopS
     public void onBindViewHolder(@NonNull TopStatusViewHolder holder, int position) {
 
         UserStatus userStatus = userStatuses.get(position);
+
+        Status lastStatus = userStatus.getStatuses().get(userStatus.getStatuses().size()-1);
+
+        Glide.with(context).load(lastStatus.getImageUrl()).into(holder.binding.image);
+
+        holder.binding.statusPic.setPortionsCount(userStatus.getStatuses().size());
 
         holder.binding.statusPic.setOnClickListener(new View.OnClickListener() {
             @Override

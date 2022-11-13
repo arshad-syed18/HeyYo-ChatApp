@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 users.clear();
                 for(DataSnapshot snapshots : snapshot.getChildren()){
                     User user = snapshots.getValue(User.class);
-                    users.add(user);
+                    if(!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
+                        users.add(user);
 
                 }
                 usersAdapter.notifyDataSetChanged();
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
+                    userStatuses.clear();
                     for (DataSnapshot storySnapshot : snapshot.getChildren()) {
                         UserStatus status = new UserStatus();
                         status.setName(storySnapshot.child("name").getValue(String.class));

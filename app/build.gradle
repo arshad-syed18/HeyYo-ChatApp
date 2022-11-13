@@ -54,6 +54,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
     implementation 'com.mikhaellopez:circularimageview:4.3.1'
+    implementation 'com.github.3llomi:CircularStatusView:V1.0.2'
 
 
     implementation "com.github.pgreze:android-reactions:1.6"

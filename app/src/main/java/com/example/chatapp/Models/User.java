@@ -14,6 +14,7 @@ public class User {
         this.profileImage = profileImage;
     }
 
+
     public String getUid() {
         return uid;
     }
