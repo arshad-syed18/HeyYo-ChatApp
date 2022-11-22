@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/menu" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="409dp"
         android:layout_height="0dp"
@@ -28,9 +28,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/statusList"
-        tools:listitem="@layout/row_conversations">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/row_conversations"
+        app:shimmer_demo_child_count="10"
+        app:shimmer_demo_grid_child_count="2"
+        app:shimmer_demo_layout="@layout/demo_layout"
+        app:shimmer_demo_layout_manager_type="linear_vertical"
+        app:shimmer_demo_angle="20"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statusList"

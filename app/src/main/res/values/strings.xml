@@ -33,4 +33,6 @@
     <string name="textview_sent">TextView</string>
     <string name="feeling_sent">feeling</string>
     <string name="status_picture">Status picture</string>
+    <string name="picture_sent">picture sent</string>
+    <string name="recieved_image">recieved image</string>
 </resources>

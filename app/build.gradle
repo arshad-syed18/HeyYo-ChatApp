@@ -56,6 +56,10 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:4.3.1'
     implementation 'com.github.3llomi:CircularStatusView:V1.0.2'
 
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2'
+
 
     implementation "com.github.pgreze:android-reactions:1.6"
 

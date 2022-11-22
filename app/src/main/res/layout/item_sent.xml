@@ -5,21 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/message_sent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/sent_drawable"
-        android:paddingStart="15dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="5dp"
-        android:text="@string/textview_sent"
-        android:textColor="@color/black"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/message_sent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/textview_sent"
+            android:textColor="@color/black"
+            tools:ignore="TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/sentPicture"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/picture_sent"
+            android:visibility="gone"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/feeling_sent"
@@ -27,9 +47,9 @@
         android:layout_height="16dp"
         android:contentDescription="@string/feeling_sent"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/message_sent"
-        app:layout_constraintEnd_toStartOf="@+id/message_sent"
-        app:layout_constraintStart_toStartOf="@+id/message_sent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:srcCompat="@drawable/ic_fb_like" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

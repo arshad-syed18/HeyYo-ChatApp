@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         binding.statusList.setAdapter(statusAdapter);
         binding.recyclerView.setAdapter(usersAdapter);
 
+        binding.recyclerView.showShimmerAdapter();
+
 
 
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         users.add(user);
 
                 }
+                binding.recyclerView.hideShimmerAdapter();
                 usersAdapter.notifyDataSetChanged();
             }
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.chatapp.Models.Message;
 import com.example.chatapp.R;
 import com.example.chatapp.databinding.ItemReceiveBinding;
@@ -60,6 +61,8 @@ public class MessagesAdapter extends RecyclerView.Adapter{
         }
     }
 
+
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
@@ -71,7 +74,8 @@ public class MessagesAdapter extends RecyclerView.Adapter{
                 R.drawable.ic_fb_laugh,
                 R.drawable.ic_fb_wow,
                 R.drawable.ic_fb_sad,
-                R.drawable.ic_fb_angry
+                R.drawable.ic_fb_angry,
+                R.drawable.remove
         };
         ReactionsConfig config = new ReactionsConfigBuilder(context)
                 .withReactions(reactions)
@@ -80,6 +84,8 @@ public class MessagesAdapter extends RecyclerView.Adapter{
 
             if(pos < 0)
                 return false;
+            if(pos>=6)
+                return true;
 
             if(holder.getClass() == sentViewHolder.class){
                 sentViewHolder viewHolder = (sentViewHolder) holder;
@@ -108,6 +114,16 @@ public class MessagesAdapter extends RecyclerView.Adapter{
 
         if(holder.getClass() == sentViewHolder.class){
             sentViewHolder viewHolder = (sentViewHolder) holder;
+
+            if(message.getMessage().equals("photo")){
+                viewHolder.binding.sentPicture.setVisibility(View.VISIBLE);
+                viewHolder.binding.messageSent.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(message.getImageUrl())
+                        .placeholder(R.drawable.placeholder_image)
+                        .into(viewHolder.binding.sentPicture);
+            }
+
             viewHolder.binding.messageSent.setText(message.getMessage());//errormaybe int to reso
 
             if(message.getFeeling()>=0) {
@@ -121,8 +137,23 @@ public class MessagesAdapter extends RecyclerView.Adapter{
                 popup.onTouch(view, motionEvent);
                 return false;
             });
+
+            viewHolder.binding.sentPicture.setOnTouchListener((view, motionEvent) -> {
+                popup.onTouch(view, motionEvent);
+                return false;
+            });
         } else{
             ReceiverViewHolder viewHolder = (ReceiverViewHolder) holder;
+            if(message.getMessage().equals("photo")){
+                viewHolder.binding.recievedImage.setVisibility(View.VISIBLE);
+                viewHolder.binding.messageRecieve.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(message.getImageUrl())
+                        .placeholder(R.drawable.placeholder_image)
+                        .into(viewHolder.binding.recievedImage);
+            }
+
+
             viewHolder.binding.messageRecieve.setText(message.getMessage());
 
             if(message.getFeeling()>=0) {
@@ -133,6 +164,10 @@ public class MessagesAdapter extends RecyclerView.Adapter{
             }
 
             viewHolder.binding.messageRecieve.setOnTouchListener((view, motionEvent) -> {
+                popup.onTouch(view, motionEvent);
+                return false;
+            });
+            viewHolder.binding.recievedImage.setOnTouchListener((view, motionEvent) -> {
                 popup.onTouch(view, motionEvent);
                 return false;
             });
