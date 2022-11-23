@@ -34,5 +34,11 @@
     <string name="feeling_sent">feeling</string>
     <string name="status_picture">Status picture</string>
     <string name="picture_sent">picture sent</string>
-    <string name="recieved_image">recieved image</string>
+    <string name="recieved_image">received image</string>
+    <string name="online">Online</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="video_call">Video Call</string>
+    <string name="audio_call">Audio Call</string>
+    <string name="profile">Profile</string>
+    <string name="block">Block</string>
 </resources>

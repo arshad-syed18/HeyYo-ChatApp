@@ -5,14 +5,18 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.example.chatapp.Adapters.MessagesAdapter;
 import com.example.chatapp.Models.Message;
+import com.example.chatapp.R;
 import com.example.chatapp.databinding.ActivityChatBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -50,11 +54,35 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        database = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
+
         receiverUid = getIntent().getStringExtra("uid");
         senderUid = FirebaseAuth.getInstance().getUid();
 
         senderRoom = senderUid + receiverUid;
         receiverRoom = receiverUid + senderUid;
+
+        database.getReference().child("presence").child(receiverUid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String status = snapshot.getValue(String.class);
+                    if(!status.isEmpty()){
+                        binding.status.setText(status);
+                        binding.status.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        setSupportActionBar(binding.toolbar);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Uploading Message");
@@ -76,10 +104,15 @@ public class ChatActivity extends AppCompatActivity {
 
 
         String name = getIntent().getStringExtra("name");
+        String profileImage = getIntent().getStringExtra("image");
+
+        binding.name.setText(name);
+        Glide.with(ChatActivity.this)
+                .load(profileImage)
+                .placeholder(R.drawable.avatar)
+                .into(binding.profile);
 
 
-        database = FirebaseDatabase.getInstance();
-        storage = FirebaseStorage.getInstance();
 
         database.getReference().child("chats")
                         .child(senderRoom)
@@ -140,8 +173,7 @@ public class ChatActivity extends AppCompatActivity {
             startActivityForResult(intent, 25);
         });
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle(name);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
     }
@@ -197,6 +229,25 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.chat_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String currentUid = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentUid).setValue("Online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String currentId = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentId).setValue("Offline");
     }
 
     @Override

@@ -3,10 +3,8 @@ package com.example.chatapp.Activities;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,9 +19,6 @@ import com.example.chatapp.Models.User;
 import com.example.chatapp.Models.UserStatus;
 import com.example.chatapp.R;
 import com.example.chatapp.databinding.ActivityMainBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,9 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -142,13 +135,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
-                case R.id.status:
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent, 75);
-                    break;}
+            if (item.getItemId() == R.id.status) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 75);
+            }
             return false;
         });
 
@@ -165,47 +157,55 @@ public class MainActivity extends AppCompatActivity {
                 Date date = new Date();
                 StorageReference reference = storage.getReference().child("status").child(date.getTime() + "");
 
-                reference.putFile(data.getData()).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful()){
-                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    UserStatus userStatus = new UserStatus();
-                                    userStatus.setName(user.getName());
-                                    userStatus.setProfileImage(user.getProfileImage());
-                                    userStatus.setLastUpdated(date.getTime());
+                reference.putFile(data.getData()).addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        reference.getDownloadUrl().addOnSuccessListener(uri -> {
+                            UserStatus userStatus = new UserStatus();
+                            userStatus.setName(user.getName());
+                            userStatus.setProfileImage(user.getProfileImage());
+                            userStatus.setLastUpdated(date.getTime());
 
-                                    HashMap<String, Object> obj = new HashMap<>();
-                                    obj.put("name", userStatus.getName());
-                                    obj.put("profileImage",userStatus.getProfileImage());
-                                    obj.put("lastUpdated", userStatus.getLastUpdated());
+                            HashMap<String, Object> obj = new HashMap<>();
+                            obj.put("name", userStatus.getName());
+                            obj.put("profileImage",userStatus.getProfileImage());
+                            obj.put("lastUpdated", userStatus.getLastUpdated());
 
-                                    String imageUrl =uri.toString();
-                                    Status status = new Status(imageUrl, userStatus.getLastUpdated());
+                            String imageUrl =uri.toString();
+                            Status status = new Status(imageUrl, userStatus.getLastUpdated());
 
-                                    database.getReference()
-                                            .child("stories")
-                                            .child(FirebaseAuth.getInstance().getUid())
-                                            .updateChildren(obj);
+                            database.getReference()
+                                    .child("stories")
+                                    .child(FirebaseAuth.getInstance().getUid())
+                                    .updateChildren(obj);
 
-                                    database.getReference()
-                                            .child("stories")
-                                            .child(FirebaseAuth.getInstance().getUid())
-                                            .child("statuses")
-                                            .push()
-                                            .setValue(status);
+                            database.getReference()
+                                    .child("stories")
+                                    .child(FirebaseAuth.getInstance().getUid())
+                                    .child("statuses")
+                                    .push()
+                                    .setValue(status);
 
-                                    dialog.dismiss();
+                            dialog.dismiss();
 
-                                }
-                            });
-                        }
+                        });
                     }
                 });
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String currentUid = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentUid).setValue("Online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String currentId = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentId).setValue("Offline");
     }
 
     @Override
