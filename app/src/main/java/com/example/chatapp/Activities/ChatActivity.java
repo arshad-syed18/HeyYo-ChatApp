@@ -73,6 +73,9 @@ public class ChatActivity extends AppCompatActivity {
                         binding.status.setText(status);
                         binding.status.setVisibility(View.VISIBLE);
                     }
+                    else{
+                        binding.status.setVisibility(View.GONE);
+                    }
                 }
             }
 
