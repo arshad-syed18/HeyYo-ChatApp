@@ -21,7 +21,7 @@ The user can send text messages, Images, Videos, and react to the messages by ho
 
 |&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   Status viewing &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   Messaging users and reaction to messages &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |
 | -------------------------- | -------------------------- |
-| &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (1).jpeg" width=280 height=520> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  | &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (2).jpeg" width=280 height=520> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |
+| &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (1).jpeg" width=280 height=520> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  | &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (3).jpeg" width=280 height=520> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |
 
 
 
