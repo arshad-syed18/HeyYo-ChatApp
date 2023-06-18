@@ -2,9 +2,15 @@ package com.example.chatapp.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(binding.getRoot());
 
         dialog = new ProgressDialog(this);
@@ -206,6 +213,22 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         String currentId = FirebaseAuth.getInstance().getUid();
         database.getReference().child("presence").child(currentId).setValue("Offline");
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.search:
+                Toast.makeText(this, "Search clicked! Sorry this feature is still in development", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.invite:
+                Toast.makeText(this, "Invite link copied to clipboard!", Toast.LENGTH_SHORT).show();
+            case R.id.groups:
+                startActivity(new Intent(MainActivity.this, GroupChat.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
