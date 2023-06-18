@@ -23,5 +23,10 @@ The user can send text messages, Images, Videos, and react to the messages by ho
 | -------------------------- | -------------------------- |
 | &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (1).jpeg" width=280 height=580> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  | &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (3).jpeg" width=280 height=580> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |
 
+The user can join Group chats and send messages to any person that is in thee group. This Group chat also holds features such as reacting to messages. Additionaly the message sent shows the name of the sender. The messsages can also be deleted by the sender, for himself or for everyone in the chat.
 
+
+|&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   Group Chat &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   Deleting Messages &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |
+| -------------------------- | -------------------------- |
+| &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (8).jpeg" width=280 height=580> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  | &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  <img src="doc_resources/HeyYo Screenshots (9).jpeg" width=280 height=580> &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  |
 
